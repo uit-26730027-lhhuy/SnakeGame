@@ -6,8 +6,15 @@
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/SnakeGame",
+      "windows": {
+        "type": "cppdbg",
+        "program": "${workspaceFolder}/SnakeGame.exe",
+        "MIMode": "gdb",
+        "miDebuggerPath": "gdb",
+        "console": "integratedTerminal"
+      },
       "cwd": "${workspaceFolder}",
-      "preLaunchTask": "build SnakeGame",
+      "preLaunchTask": "Build",
       "terminal": "integrated"
     }
   ]
