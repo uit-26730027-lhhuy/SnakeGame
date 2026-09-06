@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run SnakeGame",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/SnakeGame",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "build SnakeGame",
+      "terminal": "integrated"
+    }
+  ]
+}

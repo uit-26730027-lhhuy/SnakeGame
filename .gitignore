@@ -1,0 +1,8 @@
+# Build
+SnakeGame
+*.o
+*.out
+*.exe
+
+# macOS
+.DS_Store
