@@ -83,6 +83,7 @@ int main() {
             if (t == 'x') Huong = 1;
         }
         printf("\033[2J\033[H");  // thay system("cls")
+        VeKhung();
         r.Ve(Qua);
         cout.flush();
         if (!r.DiChuyen(Huong, Qua)) {
