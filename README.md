@@ -37,6 +37,12 @@ Dự án xây dựng game **Snake** kết hợp thực hành làm việc nhóm v
 - Phân công, commit và merge theo nhánh
 - Luyện kỹ năng cộng tác qua Pull Request / Code Review
 
+### Demo
+
+<p align="center">
+  <img src="assets/demo.gif" alt="SnakeGame demo" width="480">
+</p>
+
 ---
 
 ## 🛠 Công nghệ
@@ -89,6 +95,8 @@ cd SnakeGame
 ```
 SnakeGame/
 ├── README.md
+├── assets/
+│   └── demo.gif           # Demo gameplay
 ├── main.cpp               # Entry: tự chọn Windows / macOS
 ├── snake_windows.cpp      # Logic console cho Windows
 └── snake_macos.cpp        # Logic console cho macOS
