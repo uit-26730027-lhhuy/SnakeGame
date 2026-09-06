@@ -17,6 +17,7 @@ using namespace std;
 
 void gotoxy(int column, int line);
 int kbhit();
+void VeKhung();
 char getch();
 
 struct Point {
@@ -97,6 +98,14 @@ int main() {
 
 void gotoxy(int column, int line) {
     printf("\033[%d;%dH", line + 1, column + 1);
+}
+void VeKhung() {
+    for (int i = MINX; i <= MAXX; i++)
+        for (int j = MINX; j <= MAXY; j++)
+            if ((i == MINX) || (i == MAXX) || (j == MINY) || (j == MAXY)) {
+                gotoxy(i, j);
+                printf("+");
+            }
 }
 
 static int g_pending = -1;
