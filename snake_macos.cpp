@@ -44,6 +44,7 @@ class CONRAN {
         gotoxy(Qua.x, Qua.y);
         cout << "*";
     }
+    // return false nếu đụng khung → kết thúc game
     bool DiChuyen(int Huong, Point& Qua) {
         for (int i = DoDai - 1; i > 0; i--) A[i] = A[i - 1];
         if (Huong == 0) A[0].x = A[0].x + 1;
