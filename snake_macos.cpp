@@ -15,7 +15,6 @@ using namespace std;
 #define MAXX 35
 #define MAXY 20
 
-
 void gotoxy(int column, int line);
 int kbhit();
 void VeKhung();
@@ -37,18 +36,32 @@ class CONRAN {
         A[2].x = 12;
         A[2].y = 10;
     }
-    void Ve() {
+    void Ve(Point Qua) {
         for (int i = 0; i < DoDai; i++) {
             gotoxy(A[i].x, A[i].y);
             cout << "X";
         }
+        gotoxy(Qua.x, Qua.y);
+        cout << "*";
     }
-    void DiChuyen(int Huong) {
+    bool DiChuyen(int Huong, Point& Qua) {
         for (int i = DoDai - 1; i > 0; i--) A[i] = A[i - 1];
         if (Huong == 0) A[0].x = A[0].x + 1;
         if (Huong == 1) A[0].y = A[0].y + 1;
         if (Huong == 2) A[0].x = A[0].x - 1;
         if (Huong == 3) A[0].y = A[0].y - 1;
+
+        // chạm khung (viền +) → thua
+        if (A[0].x <= MINX || A[0].x >= MAXX || A[0].y <= MINY || A[0].y >= MAXY)
+            return false;
+
+        if ((A[0].x == Qua.x) && (A[0].y == Qua.y)) {
+            DoDai++;
+            // quả chỉ spawn bên trong khung
+            Qua.x = rand() % (MAXX - MINX - 1) + MINX + 1;
+            Qua.y = rand() % (MAXY - MINY - 1) + MINY + 1;
+        }
+        return true;
     }
 };
 
@@ -56,6 +69,10 @@ int main() {
     CONRAN r;
     int Huong = 0;
     char t;
+    Point Qua;
+    srand((int)time(0));
+    Qua.x = rand() % (MAXX - MINX - 1) + MINX + 1;
+    Qua.y = rand() % (MAXY - MINY - 1) + MINY + 1;
 
     while (1) {
         if (kbhit()) {
@@ -66,10 +83,13 @@ int main() {
             if (t == 'x') Huong = 1;
         }
         printf("\033[2J\033[H");  // thay system("cls")
-        VeKhung();
-        r.Ve();
+        r.Ve(Qua);
         cout.flush();
-        r.DiChuyen(Huong);
+        if (!r.DiChuyen(Huong, Qua)) {
+            gotoxy(MINX, MAXY + 2);
+            cout << "Game Over!" << endl;
+            break;
+        }
         usleep(300 * 1000);  // thay Sleep(300)
     }
 
