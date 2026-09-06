@@ -10,6 +10,11 @@
 #include <iostream>
 using namespace std;
 
+#define MINX 2
+#define MINY 2
+#define MAXX 35
+#define MAXY 20
+
 void gotoxy(int column, int line);
 int kbhit();
 char getch();
@@ -70,6 +75,15 @@ int main() {
 
 void gotoxy(int column, int line) {
     printf("\033[%d;%dH", line + 1, column + 1);
+}
+
+void VeKhung() {
+    for (int i = MINX; i <= MAXX; i++)
+        for (int j = MINX; j <= MAXY; j++)
+            if ((i == MINX) || (i == MAXX) || (j == MINY) || (j == MAXY)) {
+                gotoxy(i, j);
+                printf("+");
+            }
 }
 
 static int g_pending = -1;
