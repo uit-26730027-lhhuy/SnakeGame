@@ -7,6 +7,7 @@
 #include <cstdio>
 
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 using namespace std;
 
@@ -16,6 +17,7 @@ using namespace std;
 #define MAXY 20
 
 void gotoxy(int column, int line);
+void VeKhung();
 int kbhit();
 char getch();
 
@@ -35,18 +37,25 @@ class CONRAN {
         A[2].x = 12;
         A[2].y = 10;
     }
-    void Ve() {
+    void Ve(Point Qua) {
         for (int i = 0; i < DoDai; i++) {
             gotoxy(A[i].x, A[i].y);
             cout << "X";
         }
+        gotoxy(Qua.x, Qua.y);
+        cout << "*";
     }
-    void DiChuyen(int Huong) {
+    void DiChuyen(int Huong, Point& Qua) {
         for (int i = DoDai - 1; i > 0; i--) A[i] = A[i - 1];
         if (Huong == 0) A[0].x = A[0].x + 1;
         if (Huong == 1) A[0].y = A[0].y + 1;
         if (Huong == 2) A[0].x = A[0].x - 1;
         if (Huong == 3) A[0].y = A[0].y - 1;
+        if ((A[0].x == Qua.x) && (A[0].y == Qua.y)) {
+            DoDai++;
+            Qua.x = rand() % (MAXX - MINX) + MINX;
+            Qua.y = rand() % (MAXY - MINY) + MINY;
+        }
     }
 };
 
@@ -54,6 +63,10 @@ int main() {
     CONRAN r;
     int Huong = 0;
     char t;
+    Point Qua;
+    srand((int)time(0));
+    Qua.x = rand() % (MAXX - MINX) + MINX;
+    Qua.y = rand() % (MAXY - MINY) + MINY;
 
     while (1) {
         if (kbhit()) {
@@ -61,12 +74,13 @@ int main() {
             if (t == 'a') Huong = 2;
             if (t == 'w') Huong = 3;
             if (t == 'd') Huong = 0;
-            if (t == 'x') Huong = 1;
+            if (t == 's') Huong = 1;
         }
         printf("\033[2J\033[H");  // thay system("cls")
-        r.Ve();
+        VeKhung();
+        r.Ve(Qua);
         cout.flush();
-        r.DiChuyen(Huong);
+        r.DiChuyen(Huong, Qua);
         usleep(300 * 1000);  // thay Sleep(300)
     }
 
