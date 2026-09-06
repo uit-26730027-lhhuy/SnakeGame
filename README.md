@@ -88,16 +88,21 @@ cd SnakeGame
 
 ```
 SnakeGame/
-├── README.md          # Tài liệu dự án
-└── ...                # (bổ sung khi triển khai code)
+├── README.md
+├── main.cpp               # Entry: tự chọn Windows / macOS
+├── snake_windows.cpp      # Logic console cho Windows
+└── snake_macos.cpp        # Logic console cho macOS
 ```
 
----
+### Build & chạy
 
-## 📌 Liên kết
+Chỉ cần biên dịch `main.cpp` — compiler sẽ `#include` đúng file theo hệ điều hành:
 
-- **Repository:** [uit-26730027-lhhuy/SnakeGame](https://github.com/uit-26730027-lhhuy/SnakeGame)
-- **Slack nhóm:** [uit-gam-huy-tu](https://ss004f31.slack.com/archives/C0BMAUUG2RJ)
-- **Nhánh chính:** `main`
+```bash
+# macOS
+clang++ -std=c++17 -o SnakeGame main.cpp && ./SnakeGame
 
----
+# Windows
+g++ -o SnakeGame.exe main.cpp
+SnakeGame.exe
+```

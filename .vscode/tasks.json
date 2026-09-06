@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "clang++ -std=c++17 -o SnakeGame main.cpp",
+      "windows": {
+        "command": "g++ -std=c++17 -o SnakeGame.exe main.cpp"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Build & Run",
+      "type": "shell",
+      "command": "clang++ -std=c++17 -o SnakeGame main.cpp && ./SnakeGame",
+      "windows": {
+        "command": "g++ -std=c++17 -o SnakeGame.exe main.cpp && SnakeGame.exe"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "TERM": "xterm-256color"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated"
+      }
+    }
+  ]
+}

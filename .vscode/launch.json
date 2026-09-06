@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run SnakeGame",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/SnakeGame",
+      "windows": {
+        "type": "cppdbg",
+        "program": "${workspaceFolder}/SnakeGame.exe",
+        "MIMode": "gdb",
+        "miDebuggerPath": "gdb",
+        "console": "integratedTerminal"
+      },
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build",
+      "terminal": "integrated"
+    }
+  ]
+}
