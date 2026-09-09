@@ -13,7 +13,7 @@
 
 ## 📌 Liên kết
 
-- **Repository:** [uit-26730027-lhhuy/SnakeGame](https://github.com/uit-26730027-lhhuy/SnakeGame)
+- **Repository:** [uit-lhhuy/SnakeGame](https://github.com/uit-26730027-lhhuy/SnakeGame)
 - **Slack nhóm:** [uit-gam-huy-tu](https://ss004f31.slack.com/archives/C0BMAUUG2RJ)
 - **Nhánh chính:** `main`
 
